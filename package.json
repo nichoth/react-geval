@@ -20,6 +20,8 @@
     "react": "^15.4.2"
   },
   "scripts": {
+    "preversion": "npm test",
+    "postversion": "git push && git push --tags && npm publish",
     "test": "browserify test/index.js | tape-run | tap-spec"
   },
   "directories": {
