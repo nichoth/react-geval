@@ -21,6 +21,7 @@ document.body.appendChild(root)
 test('emit events', function (t) {
     t.plan(2)
 
+    // our element gets a prop `emit`
     function Elmt (props) {
         process.nextTick(function () {
             props.emit.foo('test')
@@ -29,13 +30,17 @@ test('emit events', function (t) {
         return h('div', {}, [])
     }
 
+    // define events here
     var broadcaster = broadcast(Elmt, ['foo', 'bar'])
+
+    // listen to events here
     broadcaster.on.foo(function (ev) {
         t.equal(ev, 'test', 'should emit events')
     })
     broadcaster.on.bar(function (ev) {
         t.equal(ev, 'bar test', 'should emit events')
     })
+
     ReactDom.render(h(broadcaster.view), root)
 })
 
@@ -43,12 +48,17 @@ test('listen to events', function (t) {
     t.plan(2)
     var i = 0
     var expected = ['test', 'test2']
+
+    // state is passed to our component as props
     function SubElmt (props) {
         t.equal(props.test, expected[i++], 'should listen to events')
         return null
     }
+
+    // listen to an observable
     var state = struct({ test: 'test' })
     var Subscriber = subscribe(SubElmt, state)
+
     ReactDom.render(h(Subscriber), root, function () {
         state.set({ test: 'test2' })
     })
@@ -58,6 +68,7 @@ test('event loop', function (t) {
     t.plan(2)
     var expected = ['', 'test']
     var i = 0
+
     function Elmt (props) {
         if (i > 1) return null
         process.nextTick(function () {
@@ -70,9 +81,12 @@ test('event loop', function (t) {
     var state = struct({ test: '' })
     var emitter = broadcast(Elmt, ['foo'])
     var View = subscribe(emitter.view, state)
+
+    // this decouples the view from the state logic
     emitter.on.foo(function (ev) {
         state.set({ test: ev })
     })
+
     ReactDom.render(h(View), root)
 })
 ```
