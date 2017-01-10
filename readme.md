@@ -1,3 +1,13 @@
+# react geval
+
+An event interface for react.
+
+## install
+
+    $ npm install react-geval
+
+## example
+```js
 var test = require('tape')
 var broadcast = require('../broadcast')
 var subscribe = require('../subscribe')
@@ -65,3 +75,4 @@ test('event loop', function (t) {
     })
     ReactDom.render(h(View), root)
 })
+```

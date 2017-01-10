@@ -1,28 +1,29 @@
 {
-  "peerDependencies": {
-    "react": "^15.4.2"
+  "name": "react-geval",
+  "version": "0.0.0",
+  "description": "React components that emit events",
+  "main": "index.js",
+  "dependencies": {
+    "geval": "^2.2.0",
+    "xtend": "^4.0.1"
   },
   "devDependencies": {
     "browserify": "^13.3.0",
+    "observ-struct": "^6.0.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "tap-spec": "^4.1.1",
     "tape": "^4.6.3",
     "tape-run": "^2.1.5"
   },
-  "dependencies": {
-    "geval": "^2.2.0",
-    "xtend": "^4.0.1"
-  },
-  "name": "react-geval",
-  "version": "0.0.0",
-  "description": "React components that emit events",
-  "main": "broadcast.js",
-  "directories": {
-    "test": "test"
+  "peerDependencies": {
+    "react": "^15.4.2"
   },
   "scripts": {
     "test": "browserify test/index.js | tape-run | tap-spec"
+  },
+  "directories": {
+    "test": "test"
   },
   "repository": {
     "type": "git",
