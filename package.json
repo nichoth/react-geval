@@ -1,6 +1,6 @@
 {
   "name": "react-geval",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "React components that emit events",
   "main": "index.js",
   "dependencies": {
