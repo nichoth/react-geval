@@ -4,7 +4,7 @@
   "description": "React components that emit events",
   "main": "index.js",
   "dependencies": {
-    "geval": "^2.2.0",
+    "event-emitter-demux": "^0.1.2",
     "xtend": "^4.0.1"
   },
   "devDependencies": {
